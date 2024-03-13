@@ -1,0 +1,12 @@
+{% if latest_question_list %}
+<ul>
+{% for question in latest_question_list %}
+    <!-- <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> -->
+    <!-- \{% url %\} 模板，利用了urls里定义path.name属性 -->
+    <!-- 模板里\%要转义，不然会被 当成模板语法 -->
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
